@@ -1,0 +1,75 @@
+.header{
+    border: 1px solid rgb(0, 0, 0);
+    background-color: black;
+    padding: 0px;
+    text-align: center;
+}
+.footer{
+    background-color: black;
+    border: 1px solid black;
+    padding: 0px;
+    text-align: center;
+}
+.th{
+    padding-left: 160px;
+}
+th{
+    padding-inline-end: 300px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(270deg, #3ad358, #361e9e, #14b84b, #374dcb);
+  background-size: 800% 800%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.card{
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(48, 58, 50);
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    display:inline-block;
+    background-color: aliceblue;
+}
+.card .card-image{
+    max-width: 60%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+
+}
+.card .card-title{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    color: rgb(0, 0, 0);
+}
+.card .card-title{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
+}
+.h1{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 255, 255);
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 4px;
+    color: rgb(255, 255, 255);
+}
+li{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    color: black;
+}
