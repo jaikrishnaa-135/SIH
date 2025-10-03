@@ -41,6 +41,7 @@ export default function Dashboard() {
     { title: "Solar Generation", fields: ["Voltage (V)", "Current (A)", "Power (kW)"] },
     { title: "Inverter Output", fields: ["Voltage (V)", "Current (A)", "Power (kW)"] },
     { title: "Consumption & Grid", fields: ["Consumed Power (kW)", "Supply to Grid (kW)"] },
+    { title: "Temparature", fields: ["Celcius "] },
   ];
 
   // --- Graph datasets ---
@@ -80,11 +81,13 @@ export default function Dashboard() {
           ))}
 
           {/* Solar Power Graph */}
+          <div className="carddd">
           <LineChart
             title={`Solar Power Generation - ${activePanel.toUpperCase()}`}
             labels={timestamps}
             datasets={solarDataset}
           />
+          </div>
 
          
         </div>
