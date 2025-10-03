@@ -7,7 +7,7 @@ export default function AlertsCard() {
   ]);
 
   return (
-    <div className="card">
+    <div className="cardd">
       <h3>Alerts</h3>
       {alerts.length === 0 ? (
         <p>No active alerts.</p>

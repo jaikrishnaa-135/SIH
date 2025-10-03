@@ -3,7 +3,7 @@ import React from "react";
 export default function NavTabs({ activeTab, setActiveTab }) {
   const tabs = [
     { id: "dashboard", label: "Dashboard" },
-    { id: "settings", label: "Settings" },
+    { id: "storage", label: "Storage" }, // ✅ New tab added
   ];
 
   return (
