@@ -1,9 +1,9 @@
 :root {
-  --bg:#e4e5e8;
-  --card:#0b1220;
-  --accent:#00d1b2;
-  --muted:#94a3b8;
-  --danger:#ff6b6b;
+  --bg: #e4e5e8;
+  --card: #0b1220;
+  --accent: #00d1b2;
+  --muted: #94a3b8;
+  --danger: #ff6b6b;
 }
 
 * {
@@ -18,16 +18,20 @@ html, body {
   color: #e6eef6;
 }
 
+/* Main Wrapper */
 .wrap {
   max-width: 1250px;
   margin: 20px auto;
   padding: 20px;
+  margin-left: 240px; /* space for sidebar desktop */
+  transition: margin-left 0.3s ease;
 }
 
 header {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 header h1 {
@@ -35,10 +39,22 @@ header h1 {
   font-size: 22px;
 }
 
+.nav-toggle {
+  display: none;
+  background: var(--accent);
+  border: none;
+  color: #000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
 nav {
   margin: 16px 0;
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .tab-btn {
@@ -48,6 +64,7 @@ nav {
   background: #1e293b;
   color: #fff;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .tab-btn.active {
@@ -61,7 +78,7 @@ nav {
   gap: 18px;
 }
 
-.card {
+.card, .cardd {
   background: var(--card);
   padding: 16px;
   border-radius: 12px;
@@ -70,12 +87,7 @@ nav {
 }
 
 .cardd {
-  background: var(--card);
-  padding: 16px;
   height: 268px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(253, 253, 253, 0.6);
-  margin-bottom:14px;
 }
 
 h3 {
@@ -105,7 +117,6 @@ h3 {
 }
 
 .alerts {
-  height: fit-content;
   max-height: 200px;
   overflow-y: auto;
 }
@@ -161,20 +172,21 @@ footer {
   color: var(--muted);
 }
 
-/* ================= Permanent Left Sidebar ================= */
+/* ================= Sidebar ================= */
 .sidebar-left {
   position: fixed;
   top: 0;
   left: 0;
-  width: 220px;              
-  height: 100vh;             
-  background: var(--card);   
+  width: 220px;
+  height: 100vh;
+  background: var(--card);
   padding: 20px;
   box-shadow: 4px 0 12px rgba(0,0,0,0.4);
   display: flex;
   flex-direction: column;
   gap: 16px;
   z-index: 100;
+  transition: transform 0.3s ease;
 }
 
 .sidebar-left h2 {
@@ -202,23 +214,18 @@ footer {
   background: rgba(0, 209, 178, 0.15);
 }
 
-/* Push main content to the right of the sidebar */
-.wrap {
-  margin-left: 240px; /* leaves space for permanent sidebar */
-}
-
 .sidebar-left button {
   width: 100%;
   margin-bottom: 10px;
   text-align: left;
 }
 
+/* ================= Chatbot ================= */
 .chatbot-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 200;
-  font-family: Inter, sans-serif;
 }
 
 .chatbot-toggle {
@@ -308,3 +315,56 @@ footer {
   font-weight: 600;
 }
 
+/* ================= Responsive ================= */
+@media (max-width: 900px) {
+  .wrap {
+    margin-left: 0; /* no sidebar space */
+    padding: 10px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* stack */
+  }
+
+  .sidebar-left {
+    transform: translateX(-100%); /* hidden by default */
+    position: fixed;
+  }
+
+  .sidebar-left.active {
+    transform: translateX(0); /* slide in */
+  }
+
+  .wrap.sidebar-open {
+    margin-left: 180px; /* adjust content when sidebar opens */
+  }
+
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .chatbot-box {
+    width: 100%;
+    max-width: 95vw;
+    height: 50vh;
+  }
+}
+
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 18px;
+  }
+
+  .tab-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .stat .big {
+    font-size: 16px;
+  }
+
+  canvas {
+    height: 220px !important;
+  }
+}

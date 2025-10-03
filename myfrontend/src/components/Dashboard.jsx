@@ -10,11 +10,11 @@ export default function Dashboard() {
 
   // --- Dummy Data for Demo ---
   const timestamps = [
-    new Date().setHours(0,0,0),
-    new Date().setHours(1,0,0),
-    new Date().setHours(2,0,0),
-    new Date().setHours(3,0,0),
-    new Date().setHours(4,0,0),
+    new Date().setHours(0, 0, 0),
+    new Date().setHours(1, 0, 0),
+    new Date().setHours(2, 0, 0),
+    new Date().setHours(3, 0, 0),
+    new Date().setHours(4, 0, 0),
   ];
 
   const panelData = {
@@ -31,8 +31,8 @@ export default function Dashboard() {
       battery: [0.2, 0.3, 0.2, 0.4, 0.3],
     },
     Overall: {
-      solar: [0.1, 0.8, 1.5, 1.0, 2.0],
-      battery: [0.2, 0.3, 0.2, 0.4, 0.3],
+      solar: [0.5, 1.5, 3.0, 2.0, 4.0],
+      battery: [0.3, 0.6, 0.5, 0.8, 0.4],
     },
   };
 
@@ -60,10 +60,10 @@ export default function Dashboard() {
       {/* --- Permanent Left Sidebar --- */}
       <div className="sidebar-left">
         <h2>Panels</h2>
-        {["solar1","solar2","solar3","Overall"].map(panel => (
+        {["solar1", "solar2", "solar3", "Overall"].map((panel) => (
           <button
             key={panel}
-            className={`tab-btn ${activePanel===panel ? "active" : ""}`}
+            className={`tab-btn ${activePanel === panel ? "active" : ""}`}
             onClick={() => setActivePanel(panel)}
           >
             {panel.toUpperCase()}
@@ -75,7 +75,9 @@ export default function Dashboard() {
       <div className="grid">
         <div>
           {/* StatCards */}
-          {cards.map((card,i) => <StatCard key={i} title={card.title} fields={card.fields} />)}
+          {cards.map((card, i) => (
+            <StatCard key={i} title={card.title} fields={card.fields} />
+          ))}
 
           {/* Solar Power Graph */}
           <LineChart
@@ -84,8 +86,7 @@ export default function Dashboard() {
             datasets={solarDataset}
           />
 
-          {/* Battery Usage Graph */}
-        
+         
         </div>
 
         {/* Right Sidebar */}
