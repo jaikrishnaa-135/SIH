@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function StatCard({ title, fields }) {
+export default function StatCard({ title, fields, values }) {
   return (
     <div className="card">
       <h3>{title}</h3>
@@ -8,7 +8,7 @@ export default function StatCard({ title, fields }) {
         {fields.map((field, i) => (
           <div className="stat" key={i}>
             <small>{field}</small>
-            <div className="big">0</div>
+            <div className="big">{values && values[i] !== undefined ? values[i] : 0}</div>
           </div>
         ))}
       </div>

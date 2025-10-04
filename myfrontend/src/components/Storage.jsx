@@ -16,27 +16,28 @@ export default function Storage({ panel }) {
 
   const panelData = {
     solar1: {
-      solar: [0, 1.2, 2.5, 1.8, 3.0],
       battery: [0.5, 0.6, 0.4, 0.7, 0.3],
-      percentage: ["Battery "], // battery % example
+      percentage: [80, 78, 75, 72, 70],
+      stats: [32, 4.5, 230], // Temp °C, Current A, Voltage V
     },
     solar2: {
-      solar: [0.3, 1.0, 2.0, 1.5, 2.5],
       battery: [0.4, 0.5, 0.6, 0.3, 0.2],
-      percentage: [],
+      percentage: [68, 65, 63, 60, 58],
+      stats: [31, 4.2, 228],
     },
     solar3: {
-      solar: [0.1, 0.8, 1.5, 1.0, 2.0],
       battery: [0.2, 0.3, 0.2, 0.4, 0.3],
       percentage: [60, 58, 55, 53, 50],
+      stats: [33, 4.7, 232],
     },
     Overall: {
-      solar: [0.1, 0.8, 1.5, 1.0, 2.0],
-      battery: [0.2, 0.3, 0.2, 0.4, 0.3],
+      battery: [0.3, 0.6, 0.5, 0.8, 0.4],
       percentage: [75, 72, 70, 68, 65],
+      stats: [32, 4.4, 231],
     },
   };
 
+  // --- Chart dataset ---
   const batteryDataset = [
     {
       label: "Battery Usage (kWh)",
@@ -46,11 +47,11 @@ export default function Storage({ panel }) {
     },
   ];
 
-  // Determine background color based on battery %
+  // --- Battery % avg for color ---
   const batteryAvg =
     panelData[activePanel].percentage.reduce((a, b) => a + b, 0) /
     panelData[activePanel].percentage.length;
-  const batteryBgColor = batteryAvg < 30 ? "#ff6b6b" : "#22c55e"; // red if avg < 30%, else green
+  const batteryBgColor = batteryAvg < 30 ? "#ff6b6b" : "#22c55e";
 
   return (
     <div className="storage">
@@ -58,12 +59,14 @@ export default function Storage({ panel }) {
       <StatCard
         title="Battery Stats"
         fields={["Temperature (°C)", "Current (A)", "Voltage (V)"]}
+        values={panelData[activePanel].stats}
       />
 
       {/* --- Battery Percentage --- */}
       <StatCard
         title="Battery Percentage"
-        fields={panelData[activePanel].percentage.map((p) => `${p}%`)}
+        fields={["Current Level"]}
+        values={[`${batteryAvg.toFixed(1)}%`]}
         style={{ backgroundColor: batteryBgColor, color: "#fff" }}
       />
 
